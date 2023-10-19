@@ -3,15 +3,23 @@
 using namespace std;
 int countWords(string str);
 int main(void) {
-
+	string input;
+	while (true) {
+		cout << "Enter a string or Q to quit: ";
+		getline(cin, input);
+		if (input == "Q") break;
+		cout << "Word count: " << countWords(input)<<endl;
+	}
 	}
 
 int countWords(string str) {
-	int a = 0;
 	int wordCount = 0;
-	while (str.length() - a != 0) {
-		if (str[a] = ' ' && str[a - 1] != ' ') wordCount++;
-		a++;
+	char prev = ' ';
+	char current = ' ';
+	for (int i=0; i < str.length();i++) {
+		current = str[i];
+		if (prev == ' ' && current != ' ') wordCount++;
+		prev = current;
 	}
-	return (wordCount + 1);
+	return wordCount;
 }
